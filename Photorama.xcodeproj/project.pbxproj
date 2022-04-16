@@ -20,9 +20,12 @@
 		FB77993B27FB40D7007E97F5 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77993A27FB40D7007E97F5 /* PhotoCollectionViewCell.swift */; };
 		FB7799A72801F7D9007E97F5 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7799A62801F7D9007E97F5 /* ImageStore.swift */; };
 		FB7799A928020120007E97F5 /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7799A828020120007E97F5 /* PhotoInfoViewController.swift */; };
+		FB7799D92809D4F8007E97F5 /* Photorama.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB7799D72809D4F8007E97F5 /* Photorama.xcdatamodeld */; };
+		FB7799DC2809D6AA007E97F5 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7799DA2809D6AA007E97F5 /* Photo+CoreDataClass.swift */; };
+		FB7799DD2809D6AA007E97F5 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7799DB2809D6AA007E97F5 /* Photo+CoreDataProperties.swift */; };
 		FBCD640C27E257710000829D /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD640B27E257710000829D /* FlickrAPI.swift */; };
 		FBCD640E27E38C170000829D /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD640D27E38C170000829D /* PhotoStore.swift */; };
-		FBCD641027E3D1460000829D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD640F27E3D1460000829D /* Photo.swift */; };
+		FBCD641027E3D1460000829D /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD640F27E3D1460000829D /* FlickrPhoto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +63,12 @@
 		FB77993A27FB40D7007E97F5 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB7799A62801F7D9007E97F5 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		FB7799A828020120007E97F5 /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
+		FB7799D82809D4F8007E97F5 /* Photorama.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Photorama.xcdatamodel; sourceTree = "<group>"; };
+		FB7799DA2809D6AA007E97F5 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FB7799DB2809D6AA007E97F5 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBCD640B27E257710000829D /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
 		FBCD640D27E38C170000829D /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
-		FBCD640F27E3D1460000829D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		FBCD640F27E3D1460000829D /* FlickrPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,9 @@
 		FB0925F727E25130001D6831 = {
 			isa = PBXGroup;
 			children = (
+				FB7799DA2809D6AA007E97F5 /* Photo+CoreDataClass.swift */,
+				FB7799DB2809D6AA007E97F5 /* Photo+CoreDataProperties.swift */,
+				FB7799D72809D4F8007E97F5 /* Photorama.xcdatamodeld */,
 				FB09260227E25130001D6831 /* Photorama */,
 				FB09261927E25132001D6831 /* PhotoramaTests */,
 				FB09262327E25132001D6831 /* PhotoramaUITests */,
@@ -123,7 +132,7 @@
 				FBCD640B27E257710000829D /* FlickrAPI.swift */,
 				FBCD640D27E38C170000829D /* PhotoStore.swift */,
 				FB7799A828020120007E97F5 /* PhotoInfoViewController.swift */,
-				FBCD640F27E3D1460000829D /* Photo.swift */,
+				FBCD640F27E3D1460000829D /* FlickrPhoto.swift */,
 				FB09260C27E25132001D6831 /* Assets.xcassets */,
 				FB09260E27E25132001D6831 /* LaunchScreen.storyboard */,
 				FB09261127E25132001D6831 /* Info.plist */,
@@ -279,13 +288,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBCD641027E3D1460000829D /* Photo.swift in Sources */,
+				FBCD641027E3D1460000829D /* FlickrPhoto.swift in Sources */,
+				FB7799DD2809D6AA007E97F5 /* Photo+CoreDataProperties.swift in Sources */,
 				FB7799A928020120007E97F5 /* PhotoInfoViewController.swift in Sources */,
 				FB77993B27FB40D7007E97F5 /* PhotoCollectionViewCell.swift in Sources */,
 				FB77993927FB1CA8007E97F5 /* PhotoDataSource.swift in Sources */,
 				FBCD640E27E38C170000829D /* PhotoStore.swift in Sources */,
 				FB09260827E25130001D6831 /* PhotosViewController.swift in Sources */,
+				FB7799DC2809D6AA007E97F5 /* Photo+CoreDataClass.swift in Sources */,
 				FB7799A72801F7D9007E97F5 /* ImageStore.swift in Sources */,
+				FB7799D92809D4F8007E97F5 /* Photorama.xcdatamodeld in Sources */,
 				FB09260427E25130001D6831 /* AppDelegate.swift in Sources */,
 				FB09260627E25130001D6831 /* SceneDelegate.swift in Sources */,
 				FBCD640C27E257710000829D /* FlickrAPI.swift in Sources */,
@@ -652,6 +664,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FB7799D72809D4F8007E97F5 /* Photorama.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FB7799D82809D4F8007E97F5 /* Photorama.xcdatamodel */,
+			);
+			currentVersion = FB7799D82809D4F8007E97F5 /* Photorama.xcdatamodel */;
+			path = Photorama.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FB0925F827E25130001D6831 /* Project object */;
 }
