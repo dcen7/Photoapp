@@ -105,6 +105,22 @@ class PhotoStore {
         task.resume()
     }
     
+    func fetchAllTags(completion: @escaping (Result<[Tag], Error>) -> Void) {
+        let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
+        let sortByName = NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)
+        fetchRequest.sortDescriptors = [sortByName]
+        
+        let viewContext = persistentContainer.viewContext
+        viewContext.perform {
+            do {
+                let allTags = try fetchRequest.execute()
+                completion(.success(allTags))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
     private func processImageRequest(data: Data?, error: Error?) -> Result<UIImage, Error> {
         guard let imageData = data, let image = UIImage(data: imageData) else {
             if data == nil {
