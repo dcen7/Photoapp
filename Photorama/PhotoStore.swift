@@ -38,17 +38,10 @@ class PhotoStore {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { data, response, error in
             
-            var result = self.processPhotoRequest(data: data, error: error)
-            
-            if case .success = result {
-                do {
-                    try self.persistentContainer.viewContext.save()
-                } catch {
-                    result = .failure(error)
+            self.processPhotoRequest(data: data, error: error) { (result) in
+                OperationQueue.main.addOperation {
+                    completion(result)
                 }
-            }
-            OperationQueue.main.addOperation {
-                completion(result)
             }
         }
         task.resume()
@@ -134,13 +127,14 @@ class PhotoStore {
     }
     
     
-    private func processPhotoRequest(data: Data?, error: Error?) -> Result<[Photo], Error> {
+    private func processPhotoRequest(data: Data?, error: Error?, completion: @escaping (Result<[Photo], Error>) -> Void ) {
         guard let jsonData = data else {
-            return .failure(error!)
+            completion(.failure(error!))
+            return
         }
         
-        let context = persistentContainer.viewContext
-        
+        persistentContainer.performBackgroundTask { context in
+            
         switch FlickrAPI.photos(fromJSON: jsonData) {
         case let .success(flickrPhotos):
             let photos = flickrPhotos.map { flickrPhoto -> Photo in
@@ -165,9 +159,21 @@ class PhotoStore {
                 }
                 return photo
             }
-            return .success(photos)
+            do {
+                try context.save()
+            } catch {
+                print("Error saving to Core Data: \(error).")
+                completion(.failure(error))
+                return
+            }
+            
+            let photoIDs = photos.map { $0.objectID }
+            let viewContext = self.persistentContainer.viewContext
+            let viewContextPhotos = photoIDs.map { viewContext.object(with: $0) } as! [Photo]
+            completion(.success(viewContextPhotos))
         case let .failure(error):
-            return .failure(error)
+            completion(.failure(error))
         }
+      }
     }
 }
